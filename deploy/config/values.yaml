@@ -71,8 +71,8 @@ master:
                   id: "jenkins-easy"
                   privateKeySource:
                     directEntry:
-                      privateKey: "{jenkins-easy.pem}"
-                  scope: SYSTEM
+                      privateKey: "${jenkins-easy.pem}"
+                  scope: GLOBAL
                   username: "git"
   additionalPlugins:
     - 'oic-auth:1.8'
