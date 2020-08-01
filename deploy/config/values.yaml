@@ -60,6 +60,19 @@ master:
         security:
           globalJobDslSecurityConfiguration:
             useScriptSecurity: false
+      credentials: |
+        credentials:
+          system:
+            domainCredentials:
+            - credentials:
+              - basicSSHUserPrivateKey:
+                  description: "jenkins-easy repo key"
+                  id: "jenkins-easy"
+                  privateKeySource:
+                    directEntry:
+                      privateKey: "{jenkins-easy.pem}"
+                  scope: SYSTEM
+                  username: "git"
   additionalPlugins:
     - 'oic-auth:1.8'
     - 'matrix-auth:2.6.2'
