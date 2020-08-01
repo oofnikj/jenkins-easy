@@ -53,6 +53,7 @@ master:
                 steps {
                   jobDsl {
                     targets('jobs/**/job.dsl')
+                    sandbox(false)
                   }
                 }
               }
