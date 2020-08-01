@@ -43,6 +43,7 @@ master:
           - script: >
               job('seedJob') {
                 displayName('Seed Job')
+                description('The job of all jobs')
                 scm {
                   git {
                     remote {
