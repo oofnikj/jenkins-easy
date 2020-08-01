@@ -47,7 +47,8 @@ master:
                 scm {
                   git {
                     remote {
-                      url('https://github.com/oofnikj/jenkins-easy.git')
+                      credentials('jenkins-easy')
+                      url('git@github.com:oofnikj/jenkins-easy.git')
                     }
                   }
                 }
