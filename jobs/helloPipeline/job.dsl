@@ -5,6 +5,10 @@ multibranchPipelineJob('helloPipeline') {
         git {
           id('jenkins-easy')
           remote('https://github.com/oofnikj/jenkins-easy.git')
+          traits {
+            gitBranchDiscovery()
+            pruneStaleBranchTrait()
+          }
         }
       }
       strategy {
