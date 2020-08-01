@@ -1,0 +1,13 @@
+pipeline {
+  agent any
+  stages {
+    stage('echo') {
+      steps {
+        script {
+          def user = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')[0].get('userName')
+          echo "hello $user"
+        }
+      }
+    }
+  }
+}

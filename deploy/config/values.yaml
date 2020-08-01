@@ -38,6 +38,24 @@ master:
               escapeHatchUsername: "${ADMIN_USER}"
               escapeHatchSecret: "${ADMIN_PASSWORD}"
               logoutFromOpenidProvider: false
+      seed-job: |
+        jobs:
+          - script:
+            job('system/seedJob') {
+              displayName('Seed Job')
+              scm {
+                git {
+                  remote {
+                    url('https://github.com/oofnikj/jenkins-easy.git')
+                  }
+                }
+              }
+              steps {
+                jobDsl {
+                  targets('jobs/**/job.dsl')
+                }
+              }
+            }
   additionalPlugins:
     - 'oic-auth:1.8'
     - 'matrix-auth:2.6.2'
