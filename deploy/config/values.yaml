@@ -24,9 +24,9 @@ master:
             oic:
               clientId: "${okta-client-id}"
               clientSecret: "${okta-client-secret}"
-              authorizationServerUrl: "https://dev-926779.okta.com/oauth2/v1/authorize"
-              tokenServerUrl: "https://dev-926779.okta.com/oauth2/v1/token"
-              userInfoServerUrl: "https://dev-926779.okta.com/oauth2/v1/userinfo"
+              authorizationServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/authorize"
+              tokenServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/token"
+              userInfoServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/userinfo"
               scopes: "openid email profile groups"
               userNameField: "email"
               fullNameFieldName: "name"
