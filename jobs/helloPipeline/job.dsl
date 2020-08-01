@@ -4,7 +4,7 @@ multibranchPipelineJob('helloPipeline') {
       source {
         git {
           id('jenkins-easy')
-          credentials('jenkins-easy')
+          credentialsId('jenkins-easy')
           remote('git@github.com:oofnikj/jenkins-easy.git')
           traits {
             gitBranchDiscovery()
