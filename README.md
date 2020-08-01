@@ -1,5 +1,6 @@
 # Easy Jenkins
-### A 100% declarative approach to deploying Jenkins on Kubernetes
+
+A 100% declarative approach to deploying Jenkins on Kubernetes, including plugins, jobs definitions, and user authentication.
 
 Read more: [badgateway.qc.to/deploy-jenkins-the-easy-way](https://badgateway.qc.to/deploy-jenkins-the-easy-way)
 
@@ -60,13 +61,18 @@ Add the resultant public key, `secrets/${REPO_NAME}.pem.pub`, to your Git provid
 kustomize build | kubectl apply -f-
 ```
 
-After deploying, you should be able to log in to your Jenkins instance by port-forwarding:
+After deploying, you should be able to log in to your Jenkins instance at http://localhost:8080 by port-forwarding:
 ```sh
-$ kubectl port-forward -n jenkins 
+$ kubectl port-forward -n jenkins svc/jenkins 8080
+```
+
+Run the seed job, which will check out your repository and load all of your job definitions. By default these are expected to be in `jobs/**/job.dsl`.
 
 
 ## References
 * https://www.terraform.io/docs/providers/okta/index.html
 * https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc
+* https://github.com/jenkinsci/job-dsl-plugin/wiki/JCasC
+* https://github.com/jenkinsci/job-dsl-plugin/wiki
 * https://gerg.dev/2020/06/creating-a-job-dsl-seed-job-with-jcasc/
 * https://docs.fluxcd.io/projects/helm-operator/en/stable/get-started/using-helm/
