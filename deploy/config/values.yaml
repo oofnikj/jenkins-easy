@@ -1,0 +1,45 @@
+master:
+  secretsFilesSecret: jenkins-secrets
+  containerEnv:
+  - name: SECRETS
+    value: /var/jenkins_secrets
+  jenkinsAdminEmail: "admin@example.com"
+  jenkinsUrl: "http://localhost:8080"
+  JCasC:
+    configScripts:
+      security-realm: |
+        jenkins:
+          authorizationStrategy:
+            projectMatrix:
+              permissions:
+              - "Overall/Administer:admin"
+              - "Overall/Administer:security-jenkins-admins"
+              - "Overall/Read:security-jenkins-users"
+              - "Job/Build:security-jenkins-users"
+              - "Job/Cancel:security-jenkins-users"
+              - "Job/Discover:security-jenkins-users"
+              - "Job/Read:security-jenkins-users"
+              - "View/Read:security-jenkins-users"
+          securityRealm:
+            oic:
+              clientId: "${okta-client-id}"
+              clientSecret: "${okta-client-secret}"
+              authorizationServerUrl: "https://dev-926779.okta.com/oauth2/v1/authorize"
+              tokenServerUrl: "https://dev-926779.okta.com/oauth2/v1/token"
+              userInfoServerUrl: "https://dev-926779.okta.com/oauth2/v1/userinfo"
+              scopes: "openid email profile groups"
+              userNameField: "email"
+              fullNameFieldName: "name"
+              emailFieldName: "email"
+              groupsFieldName: "groups"
+              disableSslVerification: false
+              escapeHatchEnabled: true
+              escapeHatchGroup: "admin"
+              escapeHatchUsername: "${ADMIN_USER}"
+              escapeHatchSecret: "${ADMIN_PASSWORD}"
+              logoutFromOpenidProvider: false
+  additionalPlugins:
+    - 'oic-auth:1.8'
+    - 'matrix-auth:2.6.2'
+    - 'job-dsl:1.77'
+  serviceType: LoadBalancer

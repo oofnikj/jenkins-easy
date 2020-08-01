@@ -1,0 +1,16 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  releaseName: jenkins
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: jenkins
+    version: '2.4.1'
+  valuesFrom:
+    - configMapKeyRef:
+        name: jenkins-values
+        namespace: jenkins
