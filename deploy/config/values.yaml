@@ -54,10 +54,12 @@ master:
                 steps {
                   jobDsl {
                     targets('jobs/**/job.dsl')
-                    sandbox(false)
                   }
                 }
               }
+        security:
+          globalJobDslSecurityConfiguration:
+            useScriptSecurity: false
   additionalPlugins:
     - 'oic-auth:1.8'
     - 'matrix-auth:2.6.2'
