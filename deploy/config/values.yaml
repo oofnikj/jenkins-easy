@@ -13,13 +13,13 @@ master:
             projectMatrix:
               permissions:
               - "Overall/Administer:admin"
-              - "Overall/Administer:security-jenkins-admins"
-              - "Overall/Read:security-jenkins-users"
-              - "Job/Build:security-jenkins-users"
-              - "Job/Cancel:security-jenkins-users"
-              - "Job/Discover:security-jenkins-users"
-              - "Job/Read:security-jenkins-users"
-              - "View/Read:security-jenkins-users"
+              - "Overall/Administer:jenkins-admins"
+              - "Overall/Read:jenkins-users"
+              - "Job/Build:jenkins-users"
+              - "Job/Cancel:jenkins-users"
+              - "Job/Discover:jenkins-users"
+              - "Job/Read:jenkins-users"
+              - "View/Read:jenkins-users"
           securityRealm:
             oic:
               clientId: "${okta-client-id}"
