@@ -58,7 +58,7 @@ Add the resultant public key, `secrets/${REPO_NAME}.pem.pub`, to your Git provid
 
 ### Deploy with Kustomize
 ```sh
-kustomize build | kubectl apply -f-
+$ kustomize build | kubectl apply -f-
 ```
 
 After deploying, you should be able to log in to your Jenkins instance at http://localhost:8080 by port-forwarding:
@@ -70,9 +70,9 @@ Run the seed job, which will check out your repository and load all of your job 
 
 
 ## References
-* https://www.terraform.io/docs/providers/okta/index.html
-* https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc
-* https://github.com/jenkinsci/job-dsl-plugin/wiki/JCasC
 * https://github.com/jenkinsci/job-dsl-plugin/wiki
+* https://github.com/jenkinsci/configuration-as-code-plugin
 * https://gerg.dev/2020/06/creating-a-job-dsl-seed-job-with-jcasc/
 * https://docs.fluxcd.io/projects/helm-operator/en/stable/get-started/using-helm/
+* https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc
+* https://www.terraform.io/docs/providers/okta/index.html
