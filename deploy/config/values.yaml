@@ -38,11 +38,11 @@ master:
               escapeHatchUsername: "${ADMIN_USER}"
               escapeHatchSecret: "${ADMIN_PASSWORD}"
               logoutFromOpenidProvider: false
-          security:
-            queueItemAuthenticator:
-              authenticators:
-                - global:
-                    strategy: "triggeringUsersAuthorizationStrategy"
+        security:
+          queueItemAuthenticator:
+            authenticators:
+              - global:
+                  strategy: "triggeringUsersAuthorizationStrategy"
       seed-job: |
         jobs:
           - script: >
