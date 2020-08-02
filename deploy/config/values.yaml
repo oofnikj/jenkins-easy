@@ -38,6 +38,11 @@ master:
               escapeHatchUsername: "${ADMIN_USER}"
               escapeHatchSecret: "${ADMIN_PASSWORD}"
               logoutFromOpenidProvider: false
+          security:
+            queueItemAuthenticator:
+              authenticators:
+                - global:
+                    strategy: "triggeringUsersAuthorizationStrategy"
       seed-job: |
         jobs:
           - script: >
@@ -57,10 +62,19 @@ master:
                     targets('jobs/**/job.dsl')
                   }
                 }
+                properties {
+                  authorizeProjectProperty {
+                    strategy {
+                      systemAuthorizationStrategy()
+                    }
+                  }
+                }
+                triggers {
+                  pollSCM {
+                    scmpoll_spec('H/4 * * * *')
+                  }
+                }
               }
-        security:
-          globalJobDslSecurityConfiguration:
-            useScriptSecurity: false
       credentials: |
         credentials:
           system:
@@ -75,6 +89,7 @@ master:
                   scope: GLOBAL
                   username: "git"
   additionalPlugins:
+    - 'authorize-project:1.3.0'
     - 'oic-auth:1.8'
     - 'matrix-auth:2.6.2'
     - 'job-dsl:1.77'
