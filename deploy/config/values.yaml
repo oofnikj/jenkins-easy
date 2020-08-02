@@ -1,4 +1,6 @@
 master:
+  numExecutors: 1
+  executorMode: EXCLUSIVE
   secretsFilesSecret: jenkins-secrets
   containerEnv:
   - name: SECRETS
@@ -49,6 +51,7 @@ master:
               job('seedJob') {
                 displayName('Seed Job')
                 description('The job of all jobs')
+                label('master')
                 scm {
                   git {
                     remote {
