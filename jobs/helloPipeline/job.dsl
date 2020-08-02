@@ -1,4 +1,6 @@
 multibranchPipelineJob('helloPipeline') {
+  displayName('Hello')
+  description('Prints "Hello" followed by the name of the user who ran the build')
   branchSources {
     branchSource {
       source {
