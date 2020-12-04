@@ -7,9 +7,9 @@ metadata:
 spec:
   releaseName: jenkins
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com
+    repository: https://charts.jenkins.io
     name: jenkins
-    version: '2.4.1'
+    version: '2.19.0'
   valuesFrom:
     - configMapKeyRef:
         name: jenkins-values

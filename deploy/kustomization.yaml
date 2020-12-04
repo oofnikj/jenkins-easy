@@ -5,15 +5,18 @@ namespace: jenkins
 resources:
 - 00_namespace.yaml
 - 01_jenkins-helm.yaml
+
 configMapGenerator:
 - name: jenkins-values
   files:
   - config/values.yaml
+
 secretGenerator:
 - name: jenkins-secrets
   envs:
   - secrets/okta-oidc.env
   files:
   - secrets/jenkins-easy.pem
+
 generatorOptions:
   disableNameSuffixHash: true
