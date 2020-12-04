@@ -81,7 +81,7 @@ After a few moments, you should be able to log in to your Jenkins instance at ht
 $ kubectl port-forward -n jenkins svc/jenkins 8080
 ```
 
-Run the seed job, which will check out your repository and load all of your job definitions. By default these are expected to be in `jobs/**/job.dsl`.
+Run the seed job, which will check out your repository and load all of your job definitions. By default these are expected to be in `jobs/**/job.dsl`. It may be necessary to approve the seed script if running for the first time under "Manage Jenkins > In-Process Script Approval".
 
 ## Maintenance
 
