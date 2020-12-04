@@ -14,9 +14,18 @@ configMapGenerator:
 secretGenerator:
 - name: jenkins-secrets
   envs:
-  - secrets/okta-oidc.env
+    - secrets/okta-oidc.env
+
+- name: jenkins-easy-git
+  literals:
+    - username=git
   files:
-  - secrets/jenkins-easy.pem
+    - privateKey=secrets/jenkins-easy.pem
+  options:
+    labels:
+      "jenkins.io/credentials-type": "basicSSHUserPrivateKey"
+    annotations:
+      "jenkins.io/credentials-description": "jenkins-easy repository SSH key"
 
 generatorOptions:
   disableNameSuffixHash: true
