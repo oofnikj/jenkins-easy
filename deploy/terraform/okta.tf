@@ -15,6 +15,8 @@ provider "okta" {
 provider "local" {}
 
 variable "okta_org_name" {}
+variable "okta_base_url" {}
+variable "okta_api_token" {}
 variable "first_name" {}
 variable "last_name" {}
 variable "email" {}
