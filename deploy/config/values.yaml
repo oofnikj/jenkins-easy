@@ -1,10 +1,6 @@
 controller:
   numExecutors: 1
   executorMode: EXCLUSIVE
-  secretsFilesSecret: jenkins-secrets
-  containerEnv:
-  - name: SECRETS
-    value: /var/jenkins_secrets
   jenkinsAdminEmail: "admin@example.com"
   jenkinsUrl: "http://localhost:8080"
   JCasC:
