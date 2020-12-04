@@ -1,4 +1,4 @@
-master:
+controller:
   numExecutors: 1
   executorMode: EXCLUSIVE
   secretsFilesSecret: jenkins-secrets
