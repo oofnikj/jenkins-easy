@@ -37,8 +37,8 @@ master:
               disableSslVerification: false
               escapeHatchEnabled: true
               escapeHatchGroup: "admin"
-              escapeHatchUsername: "${ADMIN_USER}"
-              escapeHatchSecret: "${ADMIN_PASSWORD}"
+              escapeHatchUsername: "${chart-admin-username}"
+              escapeHatchSecret: "${chart-admin-password}"
               logoutFromOpenidProvider: false
         security:
           queueItemAuthenticator:
