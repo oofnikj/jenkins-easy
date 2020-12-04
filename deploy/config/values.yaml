@@ -45,12 +45,17 @@ master:
             authenticators:
               - global:
                   strategy: "triggeringUsersAuthorizationStrategy"
+      jgit: |
+        tool:
+          git:
+            installations:
+              - name: "jgit"
       seed-job: |
         jobs:
           - script: >
               job('seedJob') {
                 displayName('Seed Job')
-                description('The job of all jobs')
+                description('Clone jobs from Git repository')
                 label('master')
                 scm {
                   git {
