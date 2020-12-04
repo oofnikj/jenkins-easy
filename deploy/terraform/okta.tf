@@ -82,6 +82,14 @@ data "okta_auth_server" "default" {
   name = "default"
 }
 
+# Add 'groups' claim to default auth server
+resource "okta_auth_server_scope" "groups" {
+  auth_server_id = data.okta_auth_server.default.id
+  name           = "groups"
+  description    = "groups"
+  consent        = "IMPLICIT"
+}
+
 resource "okta_auth_server_claim" "groups" {
   auth_server_id    = data.okta_auth_server.default.id
   name              = "groups"
