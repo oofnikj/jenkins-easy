@@ -56,7 +56,7 @@ controller:
                 scm {
                   git {
                     remote {
-                      credentials('jenkins-easy')
+                      credentials('jenkins-easy-git')
                       url('git@github.com:oofnikj/jenkins-easy.git')
                     }
                   }
@@ -79,23 +79,13 @@ controller:
                   }
                 }
               }
-      credentials: |
-        credentials:
-          system:
-            domainCredentials:
-            - credentials:
-              - basicSSHUserPrivateKey:
-                  description: "jenkins-easy repo key"
-                  id: "jenkins-easy"
-                  privateKeySource:
-                    directEntry:
-                      privateKey: "${jenkins-easy.pem}"
-                  scope: GLOBAL
-                  username: "git"
   additionalPlugins:
     - 'authorize-project:1.3.0'
     - 'oic-auth:1.8'
     - 'matrix-auth:2.6.2'
     - 'job-dsl:1.77'
+    - 'kubernetes-credentials-provider:0.15'
     - 'ansicolor:latest'
     - 'timestamper:latest'
+rbac:
+  readSecrets: true
