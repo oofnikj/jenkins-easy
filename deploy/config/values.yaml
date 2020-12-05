@@ -89,3 +89,21 @@ controller:
     - 'timestamper:latest'
 rbac:
   readSecrets: true
+persistence:
+  volumes:
+    - name: oidc-config
+      secret:
+        secretName: oidc-config
+  mounts:
+    - name: oidc-config
+      mountPath: /run/secrets/okta-client-id
+      subPath: okta-client-id
+      readOnly: true
+    - name: oidc-config
+      mountPath: /run/secrets/okta-client-secret
+      subPath: okta-client-secret
+      readOnly: true
+    - name: oidc-config
+      mountPath: /run/secrets/okta-org-name
+      subPath: okta-org-name
+      readOnly: true
