@@ -12,11 +12,11 @@ configMapGenerator:
   - config/values.yaml
 
 secretGenerator:
-- name: jenkins-secrets
+- name: oidc-config
   envs:
     - secrets/okta-oidc.env
 
-- name: jenkins-easy-git
+- name: jenkins-easy
   literals:
     - username=git
   files:
