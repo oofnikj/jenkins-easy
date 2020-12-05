@@ -5,3 +5,6 @@
 **/.terraform
 **/terraform.tfstate*
 **/terraform.tfvars
+
+# VSCode
+*.code-workspace
