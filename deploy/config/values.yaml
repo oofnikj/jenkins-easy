@@ -1,10 +1,6 @@
-master:
+controller:
   numExecutors: 1
   executorMode: EXCLUSIVE
-  secretsFilesSecret: jenkins-secrets
-  containerEnv:
-  - name: SECRETS
-    value: /var/jenkins_secrets
   jenkinsAdminEmail: "admin@example.com"
   jenkinsUrl: "http://localhost:8080"
   JCasC:
@@ -37,8 +33,8 @@ master:
               disableSslVerification: false
               escapeHatchEnabled: true
               escapeHatchGroup: "admin"
-              escapeHatchUsername: "${ADMIN_USER}"
-              escapeHatchSecret: "${ADMIN_PASSWORD}"
+              escapeHatchUsername: "${chart-admin-username}"
+              escapeHatchSecret: "${chart-admin-password}"
               logoutFromOpenidProvider: false
         security:
           queueItemAuthenticator:
@@ -83,23 +79,31 @@ master:
                   }
                 }
               }
-      credentials: |
-        credentials:
-          system:
-            domainCredentials:
-            - credentials:
-              - basicSSHUserPrivateKey:
-                  description: "jenkins-easy repo key"
-                  id: "jenkins-easy"
-                  privateKeySource:
-                    directEntry:
-                      privateKey: "${jenkins-easy.pem}"
-                  scope: GLOBAL
-                  username: "git"
   additionalPlugins:
     - 'authorize-project:1.3.0'
     - 'oic-auth:1.8'
     - 'matrix-auth:2.6.2'
     - 'job-dsl:1.77'
+    - 'kubernetes-credentials-provider:0.15'
     - 'ansicolor:latest'
     - 'timestamper:latest'
+rbac:
+  readSecrets: true
+persistence:
+  volumes:
+    - name: oidc-config
+      secret:
+        secretName: oidc-config
+  mounts:
+    - name: oidc-config
+      mountPath: /run/secrets/okta-client-id
+      subPath: okta-client-id
+      readOnly: true
+    - name: oidc-config
+      mountPath: /run/secrets/okta-client-secret
+      subPath: okta-client-secret
+      readOnly: true
+    - name: oidc-config
+      mountPath: /run/secrets/okta-org-name
+      subPath: okta-org-name
+      readOnly: true

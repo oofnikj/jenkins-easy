@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.jenkins.io
     name: jenkins
-    version: '2.19.0'
+    version: '3.0.2'
   valuesFrom:
     - configMapKeyRef:
         name: jenkins-values
