@@ -66,7 +66,7 @@ Add the resultant public key, `secrets/${REPO_NAME}.pem.pub`, to your Git provid
 
 **NOTE:** As of December 2020 the `kustomize` sub-command built in to `kubectl` is incompatible with the v3 manifest in this repository. Don't use `kubectl kustomize`! Instead, install `kustomize` 3.x with your favorite package manager.
 
-* Deploy the FluxCD Helm Operator:
+* From the `deploy` directory, deploy the FluxCD Helm Operator:
 ```sh
 $ kustomize build helm-operator | kubectl apply -f-
 ```
@@ -85,7 +85,7 @@ Run the seed job, which will check out your repository and load all of your job 
 
 ## Maintenance
 
-Jenkins configuration should only be modified through the Helm values in order to be persistent.
+Jenkins configuration, including plugin installation and upgrades, should only be modified through the Helm values in order to be persistent.
 
 After making changes, re-run the final deploy step:
 ```sh
@@ -101,3 +101,4 @@ After a few moments, the FluxCD Helm Operator will pick up on the changes redepl
 * https://docs.fluxcd.io/projects/helm-operator/en/stable/get-started/using-kustomize/
 * https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc
 * https://www.terraform.io/docs/providers/okta/index.html
+* https://jenkinsci.github.io/kubernetes-credentials-provider-plugin/examples/
