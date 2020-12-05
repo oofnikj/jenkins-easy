@@ -3,29 +3,29 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: jenkins
 resources:
-- 00_namespace.yaml
-- 01_jenkins-helm.yaml
+  - 00_namespace.yaml
+  - 01_jenkins-helm.yaml
 
 configMapGenerator:
-- name: jenkins-values
-  files:
-  - config/values.yaml
+  - name: jenkins-values
+    files:
+      - config/values.yaml
 
 secretGenerator:
-- name: oidc-config
-  envs:
-    - secrets/okta-oidc.env
+  - name: oidc-config
+    envs:
+      - secrets/okta-oidc.env
 
-- name: jenkins-easy
-  literals:
-    - username=git
-  files:
-    - privateKey=secrets/jenkins-easy.pem
-  options:
-    labels:
-      "jenkins.io/credentials-type": "basicSSHUserPrivateKey"
-    annotations:
-      "jenkins.io/credentials-description": "jenkins-easy repository SSH key"
+  - name: jenkins-easy
+    literals:
+      - username=git
+    files:
+      - privateKey=secrets/jenkins-easy.pem
+    options:
+      labels:
+        "jenkins.io/credentials-type": "basicSSHUserPrivateKey"
+      annotations:
+        "jenkins.io/credentials-description": "jenkins-easy repository SSH key"
 
 generatorOptions:
   disableNameSuffixHash: true
