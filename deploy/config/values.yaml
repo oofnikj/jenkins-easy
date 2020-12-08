@@ -4,8 +4,26 @@ controller:
   jenkinsAdminEmail: "admin@example.com"
   jenkinsUrl: "http://localhost:8080"
   JCasC:
+    securityRealm: |
+      oic:
+        clientId: "${okta-client-id}"
+        clientSecret: "${okta-client-secret}"
+        authorizationServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/authorize"
+        tokenServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/token"
+        userInfoServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/userinfo"
+        scopes: "openid email profile groups"
+        userNameField: "email"
+        fullNameFieldName: "name"
+        emailFieldName: "email"
+        groupsFieldName: "groups"
+        disableSslVerification: false
+        escapeHatchEnabled: true
+        escapeHatchGroup: "admin"
+        escapeHatchUsername: "${chart-admin-username}"
+        escapeHatchSecret: "${chart-admin-password}"
+        logoutFromOpenidProvider: false
     configScripts:
-      security-realm: |
+      authorization: |
         jenkins:
           authorizationStrategy:
             projectMatrix:
@@ -18,24 +36,6 @@ controller:
               - "Job/Discover:jenkins-users"
               - "Job/Read:jenkins-users"
               - "View/Read:jenkins-users"
-          securityRealm:
-            oic:
-              clientId: "${okta-client-id}"
-              clientSecret: "${okta-client-secret}"
-              authorizationServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/authorize"
-              tokenServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/token"
-              userInfoServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/userinfo"
-              scopes: "openid email profile groups"
-              userNameField: "email"
-              fullNameFieldName: "name"
-              emailFieldName: "email"
-              groupsFieldName: "groups"
-              disableSslVerification: false
-              escapeHatchEnabled: true
-              escapeHatchGroup: "admin"
-              escapeHatchUsername: "${chart-admin-username}"
-              escapeHatchSecret: "${chart-admin-password}"
-              logoutFromOpenidProvider: false
         security:
           queueItemAuthenticator:
             authenticators:
