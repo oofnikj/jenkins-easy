@@ -5,6 +5,7 @@
 **/.terraform
 **/terraform.tfstate*
 **/terraform.tfvars
+.terraform.lock.hcl
 
 # VSCode
 *.code-workspace
