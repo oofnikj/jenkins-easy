@@ -6,27 +6,12 @@ resources:
   - namespace.yaml
   - helm-repo.yaml
   - helm-release.yaml
+  - secrets/
 
 configMapGenerator:
   - name: jenkins-values
     files:
       - config/values.yaml
-
-secretGenerator:
-  - name: oidc-config
-    envs:
-      - secrets/okta-oidc.env
-
-  - name: jenkins-easy
-    literals:
-      - username=git
-    files:
-      - privateKey=secrets/jenkins-easy.pem
-    options:
-      labels:
-        "jenkins.io/credentials-type": "basicSSHUserPrivateKey"
-      annotations:
-        "jenkins.io/credentials-description": "jenkins-easy repository SSH key"
 
 generatorOptions:
   disableNameSuffixHash: true
