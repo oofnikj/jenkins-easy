@@ -68,13 +68,21 @@ resource "okta_app_oauth" "jenkins" {
 }
 
 resource "local_file" "okta_secrets" {
-  filename             = "../secrets/okta-oidc.env"
+  filename             = "../secrets/okta-oidc.yaml"
   directory_permission = "0755"
   file_permission      = "0600"
   sensitive_content    = <<-EOF
-    okta-client-id=${okta_app_oauth.jenkins.client_id}
-    okta-client-secret=${okta_app_oauth.jenkins.client_secret}
-    okta-org-name=${var.okta_org_name}
+    ---
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: oidc-config
+      namespace: jenkins
+    type: Opaque
+    stringData:
+      okta-org-name: ${var.okta_org_name}
+      okta-client-id: ${okta_app_oauth.jenkins.client_id}
+      okta-client-secret: ${okta_app_oauth.jenkins.client_secret}
   EOF
 }
 
