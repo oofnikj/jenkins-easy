@@ -6,7 +6,6 @@ resources:
   - namespace.yaml
   - helm-repo.yaml
   - helm-release.yaml
-  - secrets/
 
 configMapGenerator:
   - name: jenkins-values
