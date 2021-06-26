@@ -4,8 +4,3 @@ kind: Kustomization
 resources:
 - secrets.yaml
 - ../../../deploy/
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg
