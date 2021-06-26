@@ -1,6 +1,17 @@
 ---
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
-resources:
-- secrets.yaml
-- ../../../deploy/
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
+  interval: 10m0s
+  path: ./deploy
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: jenkins-easy

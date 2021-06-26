@@ -5,6 +5,7 @@ namespace: jenkins
 resources:
   - namespace.yaml
   - helm-repo.yaml
+  - sops-secrets.yaml
   - helm-release.yaml
 
 configMapGenerator:
