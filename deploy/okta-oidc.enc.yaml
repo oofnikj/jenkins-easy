@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: oidc-config
+    namespace: jenkins
+type: Opaque
+stringData:
+    okta-org-name: ENC[AES256_GCM,data:jQU4RmYl9WgvPVw=,iv:y4KttzsjgepIJVD0MNF8Mqyk2Tg3T/yl3eSu/tS27XA=,tag:7nkGgOM3sZoB9E3daLw8lw==,type:str]
+    okta-client-id: ENC[AES256_GCM,data:wEyWrd6Yn8M0CPJG6OCglmKI14k=,iv:Hon2YO3Hn2WfzdUnWYv3BUaCborQnT9ZQOcfLAjNeMo=,tag:QlD+lltllmEiMYooDDj4Dw==,type:str]
+    okta-client-secret: ENC[AES256_GCM,data:0K81l11idv0MYK2pQAMuDt7kjE9Q+d+q/bpK6lnlvf9oPLz2RKMuGQ==,iv:Hw58wiPiuHtqmPWsEc+ZJ4rmHl6lA3y/+upPYUSrErY=,tag:WWA+YinBCKVIOrESdi2TLw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-06-26T16:36:50Z"
+    mac: ENC[AES256_GCM,data:CLvpgF1TzybxXLpYVYz4sl/HTN5+aloN8VsWvTfD22nyjznFu2bIaQ2dRnPlP/KgTpdp50mCJxYMg9gieNjBKaNmqkQtYJmkr1qUR9XpsVRqQ4a5IXZJ8imL9cV6ABv5xu7I/BBlMfWgHvJd/EBEuGPJvHuFU8dDpRWUdCBf+MA=,iv:Mzs9BdkULLyYVfrR5MtymDdSr3ZR1rhdt1jiVRy7g8g=,tag:ivu0wtRdMXtJb1QcS19hIg==,type:str]
+    pgp:
+        - created_at: "2021-06-26T16:36:49Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0aRb+h7MJSBARAAxlzRS8Y+foxiTNSqjPbX6QlSEaF841zzY7MqQ0+QvItM
+            Af+FiZyfyVKlbyrRLmwi7ew1pSYmAFz5k1xATCNKVTFcJUuUAc4BncwLqpkc6Z0a
+            dxmTA6ZFNIPh1LUFNBgSLEK2XxyJWfT4nLswVbpwz6alapKwEEhb1hPyeYVVQlDN
+            qypT2wvtwXzbvLQqToZnpxE+Y7kIyvyNMWa4DaQKpbLqFz/fK58hwvNhCHO9RULo
+            rQtz9ZO5s8vQ2mEIxG/u/jMxOWruHUc8hY83RSh04IWA6LXZ0SgmmG2dJLI1pfGP
+            I3TvxQJKAAzxYFGYBDRsUv6AOozBwhedM+E73MhRKDmm5auduOXpqnVLB6NxciXV
+            GO7TZ1TAafickH7Yuaxl2GEuc0hkUUZSV5fcskPS3AScy0CuAxuUNoFyTM94t8e6
+            S8Pas7Ot7d1/rfuHww/HsrSr7X7tdsuAzWmQ344jnzNmpB9NJ7gZRA/9tF3hiFwW
+            9E5oxjZzdWksSsf7Bbd+qzE/PsGHj6bv9vha+Tuo26AUZRr4AwRQ2G6XVMH+PjtP
+            p0+QFldH/mkEOb7nS/LD7ZNJh07WtLFLQWqCVJ3IGEWKMWb+icKlWh3FfkJbsITQ
+            mhyHoAlB05QJ28qE0QEDWzCLXPO3hlbku46L0qLDoXlMgwZ1lZxd4O/KNkNWuWHS
+            XgGeHsoqGoFLMBXVeoVJ1lP86gxMdgY3aSgT6+AonrVZb1AHZgcIDupyEipdM6KF
+            YcB/uQ7WyAvurCSxPFCYOzTxuphZvHEkpP1lTGscY5pHP3l+6B/cVWhAyglNrhU=
+            =ir/f
+            -----END PGP MESSAGE-----
+          fp: 181C3AA8E16A40DF73F037F21B2B5982CB595209
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1
