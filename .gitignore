@@ -1,5 +1,6 @@
 # secrets
-**/secrets/*
+deploy/secrets/*
+!**/kustomization.yaml
 
 # terraform
 **/.terraform
