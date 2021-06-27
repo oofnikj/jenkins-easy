@@ -5,7 +5,7 @@ namespace: jenkins
 resources:
   - namespace.yaml
   - helm-repo.yaml
-  - jenkins-easy.pem.enc.yaml
+  # - jenkins-easy.pem.enc.yaml
   - okta-oidc.enc.yaml
   - helm-release.yaml
 
