@@ -10,7 +10,7 @@ spec:
     secretRef:
       name: sops-gpg
   interval: 10m0s
-  path: ./deploy
+  path: ./deploy/kube-1
   prune: true
   sourceRef:
     kind: GitRepository
