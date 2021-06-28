@@ -6,11 +6,11 @@ controller:
   JCasC:
     securityRealm: |
       oic:
-        clientId: "${okta-client-id}"
-        clientSecret: "${okta-client-secret}"
-        authorizationServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/authorize"
-        tokenServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/token"
-        userInfoServerUrl: "https://${okta-org-name}.okta.com/oauth2/default/v1/userinfo"
+        clientId: "${oidc-config-okta-client-id}"
+        clientSecret: "${oidc-config-okta-client-secret}"
+        authorizationServerUrl: "https://${oidc-config-okta-org-name}.okta.com/oauth2/default/v1/authorize"
+        tokenServerUrl: "https://${oidc-config-okta-org-name}.okta.com/oauth2/default/v1/token"
+        userInfoServerUrl: "https://${oidc-config-okta-org-name}.okta.com/oauth2/default/v1/userinfo"
         scopes: "openid email profile groups"
         userNameField: "email"
         fullNameFieldName: "name"
@@ -87,23 +87,12 @@ controller:
     - 'kubernetes-credentials-provider:0.15'
     - 'ansicolor:latest'
     - 'timestamper:latest'
+  additionalExistingSecrets:
+  - name: oidc-config
+    keyName: okta-org-name
+  - name: oidc-config
+    keyName: okta-client-id
+  - name: oidc-config
+    keyName: okta-client-secret
 rbac:
   readSecrets: true
-persistence:
-  volumes:
-    - name: oidc-config
-      secret:
-        secretName: oidc-config
-  mounts:
-    - name: oidc-config
-      mountPath: /run/secrets/okta-client-id
-      subPath: okta-client-id
-      readOnly: true
-    - name: oidc-config
-      mountPath: /run/secrets/okta-client-secret
-      subPath: okta-client-secret
-      readOnly: true
-    - name: oidc-config
-      mountPath: /run/secrets/okta-org-name
-      subPath: okta-org-name
-      readOnly: true
