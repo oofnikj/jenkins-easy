@@ -1,4 +1,6 @@
 controller:
+  image: "jenkins/jenkins"
+  tag: "2.299-jdk11"
   numExecutors: 1
   executorMode: EXCLUSIVE
   jenkinsAdminEmail: "admin@example.com"
