@@ -82,14 +82,13 @@ controller:
                 }
               }
   additionalPlugins:
-    - 'authorize-project:1.3.0'
+    - 'authorize-project:1.4.0'
     - 'oic-auth:1.8'
-    - 'matrix-auth:2.6.2'
+    - 'matrix-auth:2.6.7'
     - 'job-dsl:1.77'
-    - 'kubernetes-credentials-provider:0.15'
+    - 'kubernetes-credentials-provider:0.20'
     - 'ansicolor:latest'
     - 'timestamper:latest'
-    - 'workflow-multibranch:2.26'
   additionalExistingSecrets:
   - name: oidc-config
     keyName: okta-org-name
