@@ -87,6 +87,7 @@ controller:
     - 'kubernetes-credentials-provider:0.15'
     - 'ansicolor:latest'
     - 'timestamper:latest'
+    - 'workflow-multibranch:2.26'
   additionalExistingSecrets:
   - name: oidc-config
     keyName: okta-org-name
