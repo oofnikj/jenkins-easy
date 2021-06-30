@@ -86,6 +86,7 @@ controller:
     - 'oic-auth:1.8'
     - 'matrix-auth:2.6.7'
     - 'job-dsl:1.77'
+    - 'workflow-aggregator:2.6'
     - 'workflow-multibranch:2.26'
     - 'kubernetes-credentials-provider:0.20'
     - 'ansicolor:latest'
