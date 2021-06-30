@@ -82,6 +82,9 @@ controller:
                 }
               }
   additionalPlugins:
+    - 'credentials-binding:1.26' # version incompatibility
+    - 'pipeline-model-api:1.8.5' # version incompatibility
+    - 'junit:1.50' # version incompatibility
     - 'authorize-project:1.4.0'
     - 'oic-auth:1.8'
     - 'matrix-auth:2.6.7'
