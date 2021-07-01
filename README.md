@@ -5,6 +5,10 @@ A 100% declarative approach to deploying Jenkins on Kubernetes, including plugin
 Read more: [badgateway.qc.to/deploy-jenkins-the-easy-way](https://badgateway.qc.to/deploy-jenkins-the-easy-way)
 
 ## Prerequisites:
+- Fork this repository and change the reference to the new remote in the following places:
+  - `clusters/kube-1/flux-system/gotk-sync.yaml`
+  - `deploy/base/config/values.yaml`
+  - `jobs/helloPipeline/job.dsl`
 - a running Kubernetes cluster (any flavor, >= v1.19)
 
 In addition, some local tools are required:
@@ -81,8 +85,10 @@ Install Flux v2 using the Flux toolkit CLI. This will bootstrap Flux in the curr
 
 The configuration in `clusters/kube-1` is included here as an example. Choosing another path (e.g. `clusters/penny-farthing-6`) will result in the creation of that directory and the placement of configuration files pertaining to that cluster in it.
 
+Make sure you set the variable `${GITHUB_USER}` to your GitHub username prior to running the bootstrap command:
+
 ```sh
-$ flux bootstrap git --url=ssh://git@github.com/oofnikj/jenkins-easy \
+$ flux bootstrap git --url=ssh://git@github.com/${GITHUB_USER}/jenkins-easy \
   --private-key-file=secrets/jenkins-easy.pem \
   --path=clusters/kube-1 \
   --silent
