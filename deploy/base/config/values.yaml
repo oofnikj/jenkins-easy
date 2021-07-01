@@ -81,6 +81,9 @@ controller:
                   }
                 }
               }
+    security: |
+      globalJobDslSecurityConfiguration:
+        useScriptSecurity: false
   additionalPlugins:
     - 'credentials-binding:1.26' # version incompatibility
     - 'pipeline-model-api:1.8.5' # version incompatibility
