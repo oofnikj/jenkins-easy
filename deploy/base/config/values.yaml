@@ -104,6 +104,7 @@ controller:
     - 'job-dsl:1.77'
     - 'workflow-multibranch:2.26'
     - 'kubernetes-credentials-provider:0.20'
+    - 'kubernetes:1.30.0' # XSRF bug
     - 'ansicolor:latest'
     - 'timestamper:latest'
   additionalExistingSecrets:
