@@ -44,8 +44,6 @@ controller:
             authenticators:
               - global:
                   strategy: "triggeringUsersAuthorizationStrategy"
-          globalJobDslSecurityConfiguration:
-            useScriptSecurity: false
       tool: |
         tool:
           git:
