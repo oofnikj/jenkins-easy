@@ -38,17 +38,20 @@ controller:
               - "Job/Discover:jenkins-users"
               - "Job/Read:jenkins-users"
               - "View/Read:jenkins-users"
+      security: |
         security:
           queueItemAuthenticator:
             authenticators:
               - global:
                   strategy: "triggeringUsersAuthorizationStrategy"
-      jgit: |
+          globalJobDslSecurityConfiguration:
+            useScriptSecurity: false
+      tool: |
         tool:
           git:
             installations:
               - name: "jgit"
-      seed-job: |
+      jobs: |
         jobs:
           - script: >
               job('seedJob') {
@@ -81,38 +84,35 @@ controller:
                   }
                 }
               }
-    security: |
-      globalJobDslSecurityConfiguration:
-        useScriptSecurity: false
   installPlugins:
-    - kubernetes:1.30.0 # XSRF bug
-    - workflow-aggregator:2.6
-    - git:4.7.1
+    - ansicolor:1.0.0
+    - authorize-project:1.4.0
     - configuration-as-code:1.51
     - credentials-binding:1.26 # version incompatibility
-    - pipeline-model-api:1.8.5 # version incompatibility
+    - git:4.7.1
+    - job-dsl:1.77
     - junit:1.50 # version incompatibility
-    - pipeline-model-definition:1.8.5 # security vulnerability
+    - kubernetes-credentials-provider:0.20
+    - kubernetes:1.30.0 # XSRF bug
     - lockable-resources:2.11 # security vulnerability
-    - workflow-cps-global-lib:2.21 # security vulnerability
-    - pipeline-graph-analysis:1.11
-    - workflow-api:2.46
-    - workflow-basic-steps:2.23
+    - matrix-auth:2.6.7
+    - oic-auth:1.8
     - pipeline-build-step:2.13
+    - pipeline-graph-analysis:1.11
     - pipeline-milestone-step:1.3.2
-    - workflow-durable-task-step:2.39
+    - pipeline-model-api:1.8.5 # version incompatibility
+    - pipeline-model-definition:1.8.5 # security vulnerability
     - pipeline-rest-api:2.19
-    - workflow-scm-step:2.13
     - pipeline-stage-step:2.5
     - pipeline-stage-view:2.19
-    - authorize-project:1.4.0
-    - oic-auth:1.8
-    - matrix-auth:2.6.7
-    - job-dsl:1.77
+    - timestamper:1.13
+    - workflow-aggregator:2.6
+    - workflow-api:2.46
+    - workflow-basic-steps:2.23
+    - workflow-cps-global-lib:2.21 # security vulnerability
+    - workflow-durable-task-step:2.39
     - workflow-multibranch:2.26
-    - kubernetes-credentials-provider:0.20
-    - ansicolor:latest
-    - timestamper:latest
+    - workflow-scm-step:2.13
   additionalExistingSecrets:
   - name: oidc-config
     keyName: okta-org-name
